@@ -1,0 +1,647 @@
+USE [master]
+GO
+/****** Object:  Database [CookBlog]    Script Date: 6/15/2021 1:41:34 AM ******/
+CREATE DATABASE [CookBlog]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'CookBlog', FILENAME = N'D:\ProgramFiles\SQL\MSSQL14.SQLEXPRESS\MSSQL\DATA\CookBlog.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'CookBlog_log', FILENAME = N'D:\ProgramFiles\SQL\MSSQL14.SQLEXPRESS\MSSQL\DATA\CookBlog_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+GO
+ALTER DATABASE [CookBlog] SET COMPATIBILITY_LEVEL = 140
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [CookBlog].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [CookBlog] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [CookBlog] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [CookBlog] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [CookBlog] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [CookBlog] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [CookBlog] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [CookBlog] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [CookBlog] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [CookBlog] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [CookBlog] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [CookBlog] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [CookBlog] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [CookBlog] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [CookBlog] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [CookBlog] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [CookBlog] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [CookBlog] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [CookBlog] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [CookBlog] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [CookBlog] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [CookBlog] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [CookBlog] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [CookBlog] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [CookBlog] SET  MULTI_USER 
+GO
+ALTER DATABASE [CookBlog] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [CookBlog] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [CookBlog] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [CookBlog] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [CookBlog] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [CookBlog] SET QUERY_STORE = OFF
+GO
+USE [CookBlog]
+GO
+/****** Object:  Table [dbo].[__EFMigrationsHistory]    Script Date: 6/15/2021 1:41:34 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[__EFMigrationsHistory](
+	[MigrationId] [nvarchar](150) NOT NULL,
+	[ProductVersion] [nvarchar](32) NOT NULL,
+ CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY CLUSTERED 
+(
+	[MigrationId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Categories]    Script Date: 6/15/2021 1:41:34 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Categories](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](40) NOT NULL,
+	[CreatedAt] [datetime2](7) NOT NULL,
+	[ModifiedAt] [datetime2](7) NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[DeletedAt] [datetime2](7) NULL,
+ CONSTRAINT [PK_Categories] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Comments]    Script Date: 6/15/2021 1:41:34 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Comments](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Text] [nvarchar](max) NOT NULL,
+	[RecipeId] [int] NOT NULL,
+	[UserId] [int] NOT NULL,
+	[CreatedAt] [datetime2](7) NOT NULL,
+	[ModifiedAt] [datetime2](7) NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[DeletedAt] [datetime2](7) NULL,
+ CONSTRAINT [PK_Comments] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Levels]    Script Date: 6/15/2021 1:41:34 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Levels](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](15) NOT NULL,
+	[CreatedAt] [datetime2](7) NOT NULL,
+	[ModifiedAt] [datetime2](7) NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[DeletedAt] [datetime2](7) NULL,
+ CONSTRAINT [PK_Levels] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Likes]    Script Date: 6/15/2021 1:41:34 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Likes](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [int] NOT NULL,
+	[RecipeId] [int] NOT NULL,
+	[Status] [bigint] NOT NULL,
+	[CreatedAt] [datetime2](7) NOT NULL,
+	[ModifiedAt] [datetime2](7) NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[DeletedAt] [datetime2](7) NULL,
+ CONSTRAINT [PK_Likes] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Recipes]    Script Date: 6/15/2021 1:41:34 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Recipes](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](80) NOT NULL,
+	[Description] [nvarchar](max) NOT NULL,
+	[Picture] [nvarchar](max) NOT NULL,
+	[CategoryId] [int] NOT NULL,
+	[UserId] [int] NOT NULL,
+	[LevelId] [int] NOT NULL,
+	[CreatedAt] [datetime2](7) NOT NULL,
+	[ModifiedAt] [datetime2](7) NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[DeletedAt] [datetime2](7) NULL,
+ CONSTRAINT [PK_Recipes] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[UseCaseLogs]    Script Date: 6/15/2021 1:41:34 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[UseCaseLogs](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Date] [datetime2](7) NOT NULL,
+	[UseCaseName] [nvarchar](max) NULL,
+	[Data] [nvarchar](max) NULL,
+	[Actor] [nvarchar](max) NULL,
+ CONSTRAINT [PK_UseCaseLogs] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Users]    Script Date: 6/15/2021 1:41:34 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Users](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[FirstName] [nvarchar](15) NOT NULL,
+	[LastName] [nvarchar](20) NOT NULL,
+	[Email] [nvarchar](450) NOT NULL,
+	[Password] [nvarchar](max) NULL,
+	[CreatedAt] [datetime2](7) NOT NULL,
+	[ModifiedAt] [datetime2](7) NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[DeletedAt] [datetime2](7) NULL,
+ CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[UserUseCases]    Script Date: 6/15/2021 1:41:34 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[UserUseCases](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [int] NOT NULL,
+	[UseCaseId] [int] NOT NULL,
+ CONSTRAINT [PK_UserUseCases] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20210611232828_kreiraj bazu', N'5.0.7')
+GO
+SET IDENTITY_INSERT [dbo].[Categories] ON 
+
+INSERT [dbo].[Categories] ([Id], [Name], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (1, N'Dinner', CAST(N'2021-06-14T00:45:29.1733333' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (2, N'Lunch', CAST(N'2021-06-14T00:46:49.3866667' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (3, N'Breakfast', CAST(N'2021-06-14T00:46:49.3866667' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (4, N'Brunch', CAST(N'2021-06-14T12:23:21.1200000' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (5, N'Dessert', CAST(N'2021-06-14T12:23:21.1200000' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Categories] ([Id], [Name], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (6, N'Test', CAST(N'2021-06-14T18:00:35.8441178' AS DateTime2), NULL, 0, NULL)
+SET IDENTITY_INSERT [dbo].[Categories] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Comments] ON 
+
+INSERT [dbo].[Comments] ([Id], [Text], [RecipeId], [UserId], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (1, N'Radi update', 1, 3, CAST(N'2021-06-14T18:07:10.0801698' AS DateTime2), CAST(N'2021-06-14T18:07:43.9703896' AS DateTime2), 0, NULL)
+INSERT [dbo].[Comments] ([Id], [Text], [RecipeId], [UserId], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (2, N'Test comment', 1, 3, CAST(N'2021-06-14T18:08:32.7449505' AS DateTime2), CAST(N'2021-06-14T18:09:25.7894391' AS DateTime2), 1, CAST(N'2021-06-14T18:09:25.7893434' AS DateTime2))
+INSERT [dbo].[Comments] ([Id], [Text], [RecipeId], [UserId], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (3, N'Delicious!', 4, 4, CAST(N'2021-06-14T19:05:37.2836919' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Comments] ([Id], [Text], [RecipeId], [UserId], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (4, N'Very easy to make!', 6, 4, CAST(N'2021-06-14T19:06:10.2471775' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Comments] ([Id], [Text], [RecipeId], [UserId], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (5, N'Me and my boyfriend love it!', 7, 4, CAST(N'2021-06-14T19:06:36.4504992' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Comments] ([Id], [Text], [RecipeId], [UserId], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (6, N'Beautiful!', 9, 7, CAST(N'2021-06-14T19:27:35.1816857' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Comments] ([Id], [Text], [RecipeId], [UserId], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (7, N'I added some lemon, it was yummy!', 1, 7, CAST(N'2021-06-14T19:27:57.6449272' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Comments] ([Id], [Text], [RecipeId], [UserId], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (8, N'Best cheese for this recipe is mozzarella', 1, 7, CAST(N'2021-06-14T19:28:37.4934571' AS DateTime2), CAST(N'2021-06-14T19:29:45.9547511' AS DateTime2), 0, NULL)
+SET IDENTITY_INSERT [dbo].[Comments] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Levels] ON 
+
+INSERT [dbo].[Levels] ([Id], [Name], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (3, N'Begginer', CAST(N'2021-06-14T12:20:53.6500000' AS DateTime2), CAST(N'2021-06-14T17:47:02.7626111' AS DateTime2), 0, NULL)
+INSERT [dbo].[Levels] ([Id], [Name], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (4, N'Easy', CAST(N'2021-06-14T12:20:53.6500000' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Levels] ([Id], [Name], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (5, N'Medium', CAST(N'2021-06-14T12:20:53.6500000' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Levels] ([Id], [Name], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (6, N'Hard', CAST(N'2021-06-14T12:20:53.6500000' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Levels] ([Id], [Name], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (7, N'Expert', CAST(N'2021-06-14T12:20:53.6500000' AS DateTime2), NULL, 0, NULL)
+SET IDENTITY_INSERT [dbo].[Levels] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Likes] ON 
+
+INSERT [dbo].[Likes] ([Id], [UserId], [RecipeId], [Status], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (1, 3, 1, 1, CAST(N'2021-06-14T18:05:33.9938422' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Likes] ([Id], [UserId], [RecipeId], [Status], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (2, 7, 1, 1, CAST(N'2021-06-14T19:30:16.5888505' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Likes] ([Id], [UserId], [RecipeId], [Status], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (3, 7, 2, 1, CAST(N'2021-06-14T19:30:23.1136841' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Likes] ([Id], [UserId], [RecipeId], [Status], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (4, 7, 3, 1, CAST(N'2021-06-14T19:30:24.9821720' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Likes] ([Id], [UserId], [RecipeId], [Status], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (5, 7, 4, 1, CAST(N'2021-06-14T19:30:27.7799360' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Likes] ([Id], [UserId], [RecipeId], [Status], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (6, 7, 5, 1, CAST(N'2021-06-14T19:30:29.3036953' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Likes] ([Id], [UserId], [RecipeId], [Status], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (7, 7, 6, 1, CAST(N'2021-06-14T19:30:31.0165848' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Likes] ([Id], [UserId], [RecipeId], [Status], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (8, 7, 7, 1, CAST(N'2021-06-14T19:30:32.7407690' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Likes] ([Id], [UserId], [RecipeId], [Status], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (9, 7, 8, 2, CAST(N'2021-06-14T19:30:37.2129560' AS DateTime2), CAST(N'2021-06-14T19:30:54.7835562' AS DateTime2), 0, NULL)
+SET IDENTITY_INSERT [dbo].[Likes] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Recipes] ON 
+
+INSERT [dbo].[Recipes] ([Id], [Name], [Description], [Picture], [CategoryId], [UserId], [LevelId], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (1, N'Cheesecake', N'Prvo se pravi ovo pa onda ovo pa onda ono', N'61f95097-6e31-48dd-963d-7972c6741b92.jpg', 5, 1, 3, CAST(N'2021-06-14T18:01:17.4329428' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Recipes] ([Id], [Name], [Description], [Picture], [CategoryId], [UserId], [LevelId], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (2, N'Chicken Sandwitch', N'For this chicken sandwitch you will need buns, chicken breasts...', N'd1c775be-50ec-4242-b240-5a8f9e5a1e25.jpg', 1, 1, 4, CAST(N'2021-06-14T18:57:45.1156886' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Recipes] ([Id], [Name], [Description], [Picture], [CategoryId], [UserId], [LevelId], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (3, N'Beef', N'For this beef you will need...', N'11b5527a-bf84-4031-acf0-a370392ce05a.jpg', 2, 1, 7, CAST(N'2021-06-14T18:59:28.2200531' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Recipes] ([Id], [Name], [Description], [Picture], [CategoryId], [UserId], [LevelId], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (4, N'Chocolate cake', N'For this Chocolate cake you will need...', N'a54c7e3b-13a9-4ef6-b890-d65cb196c488.jpg', 5, 1, 5, CAST(N'2021-06-14T19:00:07.2074691' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Recipes] ([Id], [Name], [Description], [Picture], [CategoryId], [UserId], [LevelId], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (5, N'Chicken breast', N'For this Chicken breast you will need...', N'a94e59a5-4467-44e1-9511-b729978f737e.jpg', 2, 1, 4, CAST(N'2021-06-14T19:00:43.7874261' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Recipes] ([Id], [Name], [Description], [Picture], [CategoryId], [UserId], [LevelId], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (6, N'Mac and Cheese', N'For this Mac and Cheese you will need...', N'9b9e2495-23ff-462b-be08-77334c17dbfb.jpg', 1, 1, 3, CAST(N'2021-06-14T19:01:12.4444968' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Recipes] ([Id], [Name], [Description], [Picture], [CategoryId], [UserId], [LevelId], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (7, N'Bruschetta', N'For this Bruschetta you will need...', N'22e4e505-0fe8-4201-92fb-08ddcd18167a.jpg', 4, 1, 3, CAST(N'2021-06-14T19:01:38.6670411' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Recipes] ([Id], [Name], [Description], [Picture], [CategoryId], [UserId], [LevelId], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (8, N'Omlette', N'For this Omlette you will need...', N'aaa1170f-b82c-42f8-a84b-cd96e5c47073.jpg', 3, 1, 3, CAST(N'2021-06-14T19:02:31.3978208' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Recipes] ([Id], [Name], [Description], [Picture], [CategoryId], [UserId], [LevelId], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (9, N'Shrimps', N'For this Shrimps you will need...', N'a9c6413f-df1f-43ef-9c6b-5fefb4a2a289.jpg', 2, 1, 5, CAST(N'2021-06-14T19:03:06.9412366' AS DateTime2), NULL, 0, NULL)
+SET IDENTITY_INSERT [dbo].[Recipes] OFF
+GO
+SET IDENTITY_INSERT [dbo].[UseCaseLogs] ON 
+
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (1, CAST(N'2021-06-13T22:30:28.3678113' AS DateTime2), N'EfGetLevelsQuery', N'{"Name":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (2, CAST(N'2021-06-13T22:47:15.7199001' AS DateTime2), N'EfGetCategoriesQuery', N'{"Name":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (3, CAST(N'2021-06-13T22:48:51.1580910' AS DateTime2), N'EfGetOneCategoryQuery', N'1', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (4, CAST(N'2021-06-14T10:31:25.8557449' AS DateTime2), N'EfGetOneCategoryQuery', N'1', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (5, CAST(N'2021-06-14T10:44:19.6071696' AS DateTime2), N'EfGetUsersClientQuery', N'{"FirstName":null,"LastName":null,"Email":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (6, CAST(N'2021-06-14T10:54:22.0904130' AS DateTime2), N'User Registration', N'{"FirstName":null,"LastName":null,"Email":null,"Password":null}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (7, CAST(N'2021-06-14T10:55:58.3455843' AS DateTime2), N'User Registration', N'{"FirstName":"Admin","LastName":"Admin","Email":"t.pavlovic996@gmail.com","Password":"cipiripi1"}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (8, CAST(N'2021-06-14T10:58:52.4094507' AS DateTime2), N'User Registration', N'{"FirstName":"Admin","LastName":"Admin","Email":"t.pavlovic996@gmail.com","Password":"cipiripi1"}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (9, CAST(N'2021-06-14T11:01:16.5286528' AS DateTime2), N'EfCreateLevelCommand', N'{"Id":0,"Name":null}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (10, CAST(N'2021-06-14T11:01:29.1449032' AS DateTime2), N'EfGetLevelsQuery', N'{"Name":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (11, CAST(N'2021-06-14T11:04:33.1338447' AS DateTime2), N'EfGetOneCategoryQuery', N'5', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (12, CAST(N'2021-06-14T11:04:53.1345143' AS DateTime2), N'EfGetLevelsQuery', N'{"Name":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (13, CAST(N'2021-06-14T11:41:25.3357782' AS DateTime2), N'EfCreateLevelCommand', N'{"Id":0,"Name":null}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (14, CAST(N'2021-06-14T11:43:05.4430584' AS DateTime2), N'EfGetUsersClientQuery', N'{"FirstName":null,"LastName":null,"Email":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (15, CAST(N'2021-06-14T11:43:14.6168211' AS DateTime2), N'EfGetUsersClientQuery', N'{"FirstName":null,"LastName":null,"Email":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (16, CAST(N'2021-06-14T11:56:12.0843805' AS DateTime2), N'Create Users Use Case', N'{"Id":0,"UserId":0,"UseCaseId":0}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (17, CAST(N'2021-06-14T11:58:38.0488762' AS DateTime2), N'EfGetUsersQuery', N'{"FirstName":null,"LastName":null,"Email":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (18, CAST(N'2021-06-14T12:21:36.9227911' AS DateTime2), N'EfGetLevelsQuery', N'{"Name":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (19, CAST(N'2021-06-14T12:24:13.1414859' AS DateTime2), N'EfGetLevelsQuery', N'{"Name":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (20, CAST(N'2021-06-14T12:40:52.3950318' AS DateTime2), N'EfGetLevelsQuery', N'{"Name":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (21, CAST(N'2021-06-14T12:41:21.2393981' AS DateTime2), N'EfGetCategoriesQuery', N'{"Name":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (22, CAST(N'2021-06-14T12:45:31.1684674' AS DateTime2), N'EfGetOneUserQuery', N'1', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (23, CAST(N'2021-06-14T12:51:44.2293090' AS DateTime2), N'EfCreateCategoryCommand', N'{"Id":0,"Name":"Test"}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (24, CAST(N'2021-06-14T12:58:19.2642034' AS DateTime2), N'Search Audit Log', N'{"Actor":null,"UseCaseName":null,"DateStart":null,"DateEnd":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (25, CAST(N'2021-06-14T13:01:04.7891023' AS DateTime2), N'EfGetLevelsQuery', N'{"Name":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (26, CAST(N'2021-06-14T13:07:33.7236096' AS DateTime2), N'Search Audit Log', N'{"Actor":null,"UseCaseName":null,"DateStart":null,"DateEnd":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (27, CAST(N'2021-06-14T13:43:59.7499750' AS DateTime2), N'EfGetLevelsQuery', N'{"Name":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (28, CAST(N'2021-06-14T13:44:41.0373403' AS DateTime2), N'Search Audit Log', N'{"Actor":null,"UseCaseName":null,"DateStart":null,"DateEnd":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (29, CAST(N'2021-06-14T13:45:36.9048763' AS DateTime2), N'Search Audit Log', N'{"Actor":null,"UseCaseName":null,"DateStart":null,"DateEnd":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (30, CAST(N'2021-06-14T13:47:38.2634350' AS DateTime2), N'User Registration', N'{"FirstName":"Marko","LastName":"Milic","Email":"gamesgamesgames996@gmail.com","Password":"cipiripi1"}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (31, CAST(N'2021-06-14T14:26:15.3809045' AS DateTime2), N'EfGetCategoriesQuery', N'{"Name":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (32, CAST(N'2021-06-14T14:28:23.1910661' AS DateTime2), N'EfGetCategoriesQuery', N'{"Name":null,"PerPage":2,"Page":1}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (33, CAST(N'2021-06-14T14:28:29.6064267' AS DateTime2), N'EfGetCategoriesQuery', N'{"Name":"D","PerPage":2,"Page":1}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (34, CAST(N'2021-06-14T14:29:32.5623930' AS DateTime2), N'EfGetCategoriesQuery', N'{"Name":"D","PerPage":1,"Page":1}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (35, CAST(N'2021-06-14T14:30:19.3994274' AS DateTime2), N'EfGetLevelsQuery', N'{"Name":null,"PerPage":2,"Page":1}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (36, CAST(N'2021-06-14T14:30:30.1069420' AS DateTime2), N'EfGetLevelsQuery', N'{"Name":null,"PerPage":10,"Page":1}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (37, CAST(N'2021-06-14T14:31:13.8966229' AS DateTime2), N'EfGetCategoriesQuery', N'{"Name":null,"PerPage":10,"Page":1}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (38, CAST(N'2021-06-14T14:32:44.0618397' AS DateTime2), N'Create User', N'{"Id":0,"FirstName":"Tijana","LastName":"Pavlovic","Email":"titlip13@gmail.com","Password":"cipiripi1","useCasesForUser":[0]}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (39, CAST(N'2021-06-14T14:39:34.8917990' AS DateTime2), N'Create User', N'{"Id":0,"FirstName":"Tijana","LastName":"Pavlovic","Email":"titlip13@gmail.com","Password":"cipiripi1","useCasesForUser":[0]}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (40, CAST(N'2021-06-14T14:45:03.1034077' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":0,"Name":"Cheesecake","Description":"Prvo se uradi ovo pa onda ovo pa onda ovo pa onda ovo pa ovo pa onda ovo pa ovo pa onda ovo pa ovo pa onda ovo pa ovo pa onda ovo pa ovo pa onda ovo pa ovo pa onda ovo pa ovo pa onda ovo pa ovo pa onda ovo pa ovo pa onda ovo pa ovo pa onda ovo pa ovo pa onda ovo pa ovo pa onda ovo pa ovo pa onda ovo pa ovo pa onda ovo pa ovo pa onda ovo pa ovo","Picture":{"ContentDisposition":"form-data; name=\"Picture\"; filename=\"download.jpg\"","ContentType":"image/jpeg","Headers":{"Content-Disposition":["form-data; name=\"Picture\"; filename=\"download.jpg\""],"Content-Type":["image/jpeg"]},"Length":6163,"Name":"Picture","FileName":"download.jpg"},"CategoryId":5,"LevelId":3,"UserId":0}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (41, CAST(N'2021-06-14T14:51:32.8409015' AS DateTime2), N'Update User', N'{"Id":3,"FirstName":"Tijana","LastName":"Pavlovic","Email":"titlip13@gmail.com","Password":"cipiripi1","useCasesForUser":[13,14,19,20,23,25,26,30]}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (42, CAST(N'2021-06-14T14:52:06.8544964' AS DateTime2), N'Update User', N'{"Id":3,"FirstName":"Tijana","LastName":"Pavlovic","Email":null,"Password":"cipiripi1","useCasesForUser":[13,14,19,20,23,25,26,30]}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (43, CAST(N'2021-06-14T15:03:40.4694123' AS DateTime2), N'Update User', N'{"Id":3,"FirstName":null,"LastName":null,"Email":null,"Password":null,"useCasesForUser":[11,13,14,17,19,20,23,25,26,30]}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (44, CAST(N'2021-06-14T15:05:14.6250005' AS DateTime2), N'Update User', N'{"Id":3,"FirstName":null,"LastName":null,"Email":null,"Password":null,"useCasesForUser":[11,13,14,17,19,20,23,25,26,30]}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (45, CAST(N'2021-06-14T15:06:00.4269758' AS DateTime2), N'Update User', N'{"Id":3,"FirstName":null,"LastName":null,"Email":null,"Password":null,"useCasesForUser":[11,13,14,17,19,20,23,25,26,30]}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (46, CAST(N'2021-06-14T15:06:47.9913348' AS DateTime2), N'Update User', N'{"Id":3,"FirstName":null,"LastName":null,"Email":null,"Password":null,"useCasesForUser":[11,13,14,17,19,20,23,25,26,30]}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (47, CAST(N'2021-06-14T15:07:47.8135767' AS DateTime2), N'Update User', N'{"Id":3,"FirstName":null,"LastName":null,"Email":null,"Password":null,"useCasesForUser":[11,13,14,17,19,20,23,25,26,30]}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (48, CAST(N'2021-06-14T15:08:54.1383191' AS DateTime2), N'Update User', N'{"Id":3,"FirstName":null,"LastName":null,"Email":null,"Password":"cipiripi1","useCasesForUser":[11,13,14,17,19,20,23,25,26,30]}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (49, CAST(N'2021-06-14T15:14:03.6520853' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":1,"Name":"Cheesecake","Description":"Pravi se tako sto se prvo uradi ovo pa ovo pa ono pa onda ovo pa onda ono pa ovo pa ono pa onda ovo pa onda ono pa ovo pa ono pa onda ovo pa onda ono pa ovo pa ono pa onda ovo pa onda ono","Picture":{"ContentDisposition":"form-data; name=\"Picture\"; filename=\"download.jpg\"","ContentType":"image/jpeg","Headers":{"Content-Disposition":["form-data; name=\"Picture\"; filename=\"download.jpg\""],"Content-Type":["image/jpeg"]},"Length":6163,"Name":"Picture","FileName":"download.jpg"},"CategoryId":5,"LevelId":3,"UserId":3}', N'titlip13@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (50, CAST(N'2021-06-14T15:20:35.6104780' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":1,"Name":"Cheesecake","Description":"Pravi se tako sto se prvo uradi ovo pa ovo pa ono pa onda ovo pa onda ono pa ovo pa ono pa onda ovo pa onda ono pa ovo pa ono pa onda ovo pa onda ono pa ovo pa ono pa onda ovo pa onda ono","Picture":null,"CategoryId":5,"LevelId":3,"UserId":0}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (51, CAST(N'2021-06-14T15:21:11.4734142' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":1,"Name":"Cheesecake","Description":"Pravi se tako sto se prvo uradi ovo pa ovo pa ono pa onda ovo pa onda ono pa ovo pa ono pa onda ovo pa onda ono pa ovo pa ono pa onda ovo pa onda ono pa ovo pa ono pa onda ovo pa onda ono","Picture":null,"CategoryId":5,"LevelId":3,"UserId":0}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (52, CAST(N'2021-06-14T15:22:30.6032372' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":1,"Name":"Cheesecake","Description":"Pravi se tako sto se prvo uradi ovo pa onda ovo pa onda ono pa ovo","Picture":{"ContentDisposition":"form-data; name=\"Picture\"; filename=\"download.jpg\"","ContentType":"image/jpeg","Headers":{"Content-Disposition":["form-data; name=\"Picture\"; filename=\"download.jpg\""],"Content-Type":["image/jpeg"]},"Length":6163,"Name":"Picture","FileName":"download.jpg"},"CategoryId":5,"LevelId":3,"UserId":0}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (53, CAST(N'2021-06-14T15:23:29.3481394' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":1,"Name":"Cheesecake","Description":"Pravi se tako sto se prvo uradi ovo pa onda ovo pa onda ono pa ovo","Picture":null,"CategoryId":5,"LevelId":3,"UserId":3}', N'titlip13@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (54, CAST(N'2021-06-14T15:23:40.3846363' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":1,"Name":"Cheesecake","Description":"Pravi se tako sto se prvo uradi ovo pa onda ovo pa onda ono pa ovo","Picture":{"ContentDisposition":"form-data; name=\"Picture\"; filename=\"download.jpg\"","ContentType":"image/jpeg","Headers":{"Content-Disposition":["form-data; name=\"Picture\"; filename=\"download.jpg\""],"Content-Type":["image/jpeg"]},"Length":6163,"Name":"Picture","FileName":"download.jpg"},"CategoryId":5,"LevelId":3,"UserId":3}', N'titlip13@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (55, CAST(N'2021-06-14T15:26:21.0084827' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":1,"Name":"Cheesecake","Description":"Pravi se tako sto se prvo uradi ovo pa onda ovo pa onda ono pa ovo","Picture":{"ContentDisposition":"form-data; name=\"Picture\"; filename=\"download.jpg\"","ContentType":"image/jpeg","Headers":{"Content-Disposition":["form-data; name=\"Picture\"; filename=\"download.jpg\""],"Content-Type":["image/jpeg"]},"Length":6163,"Name":"Picture","FileName":"download.jpg"},"CategoryId":5,"LevelId":3,"UserId":3}', N'titlip13@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (56, CAST(N'2021-06-14T15:31:39.0848778' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":1,"Name":"Cheesecake","Description":"Pravi se tako sto se prvo uradi ovo pa onda ovo pa onda ono pa ovo","Picture":{"ContentDisposition":"form-data; name=\"Picture\"; filename=\"download.jpg\"","ContentType":"image/jpeg","Headers":{"Content-Disposition":["form-data; name=\"Picture\"; filename=\"download.jpg\""],"Content-Type":["image/jpeg"]},"Length":6163,"Name":"Picture","FileName":"download.jpg"},"CategoryId":5,"LevelId":3,"UserId":0}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (57, CAST(N'2021-06-14T15:44:59.3244288' AS DateTime2), N'EfUpdateLevelCommand', N'{"Id":1,"Name":"Very Easy"}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (58, CAST(N'2021-06-14T15:46:12.7044180' AS DateTime2), N'EfUpdateLevelCommand', N'{"Id":1,"Name":"Very Easy"}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (59, CAST(N'2021-06-14T15:46:35.1868552' AS DateTime2), N'EfUpdateLevelCommand', N'{"Id":3,"Name":"Very Easy"}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (60, CAST(N'2021-06-14T15:47:02.7556879' AS DateTime2), N'EfUpdateLevelCommand', N'{"Id":3,"Name":"Begginer"}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (61, CAST(N'2021-06-14T15:48:35.2008138' AS DateTime2), N'Update User', N'{"Id":3,"FirstName":"Sara","LastName":null,"Email":null,"Password":null,"useCasesForUser":[]}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (62, CAST(N'2021-06-14T15:49:05.8344120' AS DateTime2), N'Update User', N'{"Id":3,"FirstName":"Sara","LastName":null,"Email":null,"Password":null,"useCasesForUser":[]}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (63, CAST(N'2021-06-14T15:50:01.1178593' AS DateTime2), N'Update User', N'{"Id":3,"FirstName":"Sara","LastName":null,"Email":null,"Password":null,"useCasesForUser":[]}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (64, CAST(N'2021-06-14T15:50:49.2337064' AS DateTime2), N'Update User', N'{"Id":3,"FirstName":"Sara","LastName":null,"Email":null,"Password":"cipiripi1","useCasesForUser":[]}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (65, CAST(N'2021-06-14T15:53:13.5217087' AS DateTime2), N'Update User', N'{"Id":3,"FirstName":"Sara","LastName":"Pavlovic","Email":"titlip14@gmail.com","Password":"cipiripi1","useCasesForUser":[11,13,14,19,20,23,25,26,30]}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (66, CAST(N'2021-06-14T15:54:31.4595664' AS DateTime2), N'Delete User', N'2', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (67, CAST(N'2021-06-14T15:57:42.4370688' AS DateTime2), N'Create Users Use Case', N'{"Id":0,"UserId":3,"UseCaseId":11}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (68, CAST(N'2021-06-14T15:58:15.9339847' AS DateTime2), N'Search Audit Log', N'{"Actor":"t","UseCaseName":null,"DateStart":null,"DateEnd":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (69, CAST(N'2021-06-14T15:58:52.6711488' AS DateTime2), N'Search Audit Log', N'{"Actor":"t","UseCaseName":null,"DateStart":null,"DateEnd":null,"PerPage":2,"Page":1}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (70, CAST(N'2021-06-14T15:59:07.2666555' AS DateTime2), N'Search Audit Log', N'{"Actor":"t","UseCaseName":null,"DateStart":null,"DateEnd":null,"PerPage":10,"Page":1}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (71, CAST(N'2021-06-14T15:59:21.8908189' AS DateTime2), N'Search Audit Log', N'{"Actor":"t","UseCaseName":null,"DateStart":null,"DateEnd":null,"PerPage":7,"Page":1}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (72, CAST(N'2021-06-14T15:59:44.8479058' AS DateTime2), N'Search Audit Log', N'{"Actor":"t","UseCaseName":null,"DateStart":null,"DateEnd":null,"PerPage":10,"Page":7}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (73, CAST(N'2021-06-14T16:00:35.8188016' AS DateTime2), N'EfCreateCategoryCommand', N'{"Id":0,"Name":"Test"}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (74, CAST(N'2021-06-14T16:01:17.3836755' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":0,"Name":"Cheesecake","Description":"Prvo se pravi ovo pa onda ovo pa onda ono","Picture":{"ContentDisposition":"form-data; name=\"Picture\"; filename=\"download.jpg\"","ContentType":"image/jpeg","Headers":{"Content-Disposition":["form-data; name=\"Picture\"; filename=\"download.jpg\""],"Content-Type":["image/jpeg"]},"Length":6163,"Name":"Picture","FileName":"download.jpg"},"CategoryId":5,"LevelId":3,"UserId":1}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (75, CAST(N'2021-06-14T16:03:30.3315130' AS DateTime2), N'EfLikePostCommand', N'{"UserId":0,"RecipeId":1,"Status":0}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (76, CAST(N'2021-06-14T16:04:12.6530927' AS DateTime2), N'EfLikePostCommand', N'{"UserId":0,"RecipeId":1,"Status":0}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (77, CAST(N'2021-06-14T16:04:33.1857322' AS DateTime2), N'EfLikePostCommand', N'{"UserId":1,"RecipeId":1,"Status":0}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (78, CAST(N'2021-06-14T16:05:18.0340328' AS DateTime2), N'EfLikePostCommand', N'{"UserId":3,"RecipeId":1,"Status":0}', N'titlip14@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (79, CAST(N'2021-06-14T16:05:33.9626037' AS DateTime2), N'EfLikePostCommand', N'{"UserId":3,"RecipeId":1,"Status":1}', N'titlip14@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (80, CAST(N'2021-06-14T16:06:34.7184521' AS DateTime2), N'EfGetOneRecipeQuery', N'1', N'titlip14@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (81, CAST(N'2021-06-14T16:07:10.0579380' AS DateTime2), N'EfCreateCommentCommand', N'{"Id":0,"Text":"Test comment","RecipeId":1,"UserId":3}', N'titlip14@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (82, CAST(N'2021-06-14T16:07:43.9522983' AS DateTime2), N'EfUpdateCommentCommand', N'{"Id":1,"Text":"Radi update","RecipeId":1,"UserId":3}', N'titlip14@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (83, CAST(N'2021-06-14T16:08:32.7403489' AS DateTime2), N'EfCreateCommentCommand', N'{"Id":0,"Text":"Test comment","RecipeId":1,"UserId":3}', N'titlip14@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (84, CAST(N'2021-06-14T16:09:01.2361423' AS DateTime2), N'EfDeleteCommentCommand', N'2', N'titlip14@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (85, CAST(N'2021-06-14T16:09:17.6921198' AS DateTime2), N'EfDeletePersonalCommentCommand', N'3', N'titlip14@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (86, CAST(N'2021-06-14T16:09:25.7850589' AS DateTime2), N'EfDeletePersonalCommentCommand', N'2', N'titlip14@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (87, CAST(N'2021-06-14T16:10:33.5025422' AS DateTime2), N'EfGetRecipesQuery', N'{"Name":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (88, CAST(N'2021-06-14T16:11:53.1057810' AS DateTime2), N'EfGetRecipesQuery', N'{"Name":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (89, CAST(N'2021-06-14T16:56:48.8100451' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":2,"Name":"Chicken Sandwitch","Description":"For this chicken sandwitch you will need buns, chicken breasts...","Picture":{"ContentDisposition":"form-data; name=\"Picture\"; filename=\"chickensandwitch.jpg\"","ContentType":"image/jpeg","Headers":{"Content-Disposition":["form-data; name=\"Picture\"; filename=\"chickensandwitch.jpg\""],"Content-Type":["image/jpeg"]},"Length":8975,"Name":"Picture","FileName":"chickensandwitch.jpg"},"CategoryId":1,"LevelId":2,"UserId":0}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (90, CAST(N'2021-06-14T16:57:12.1623416' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":2,"Name":"Chicken Sandwitch","Description":"For this chicken sandwitch you will need buns, chicken breasts...","Picture":{"ContentDisposition":"form-data; name=\"Picture\"; filename=\"chickensandwitch.jpg\"","ContentType":"image/jpeg","Headers":{"Content-Disposition":["form-data; name=\"Picture\"; filename=\"chickensandwitch.jpg\""],"Content-Type":["image/jpeg"]},"Length":8975,"Name":"Picture","FileName":"chickensandwitch.jpg"},"CategoryId":1,"LevelId":2,"UserId":1}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (91, CAST(N'2021-06-14T16:57:24.8225932' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":2,"Name":"Chicken Sandwitch","Description":"For this chicken sandwitch you will need buns, chicken breasts...","Picture":{"ContentDisposition":"form-data; name=\"Picture\"; filename=\"chickensandwitch.jpg\"","ContentType":"image/jpeg","Headers":{"Content-Disposition":["form-data; name=\"Picture\"; filename=\"chickensandwitch.jpg\""],"Content-Type":["image/jpeg"]},"Length":8975,"Name":"Picture","FileName":"chickensandwitch.jpg"},"CategoryId":1,"LevelId":4,"UserId":1}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (92, CAST(N'2021-06-14T16:57:45.0995685' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":0,"Name":"Chicken Sandwitch","Description":"For this chicken sandwitch you will need buns, chicken breasts...","Picture":{"ContentDisposition":"form-data; name=\"Picture\"; filename=\"chickensandwitch.jpg\"","ContentType":"image/jpeg","Headers":{"Content-Disposition":["form-data; name=\"Picture\"; filename=\"chickensandwitch.jpg\""],"Content-Type":["image/jpeg"]},"Length":8975,"Name":"Picture","FileName":"chickensandwitch.jpg"},"CategoryId":1,"LevelId":4,"UserId":1}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (93, CAST(N'2021-06-14T16:59:28.2041360' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":0,"Name":"Beef","Description":"For this beef you will need...","Picture":{"ContentDisposition":"form-data; name=\"Picture\"; filename=\"beef.jpg\"","ContentType":"image/jpeg","Headers":{"Content-Disposition":["form-data; name=\"Picture\"; filename=\"beef.jpg\""],"Content-Type":["image/jpeg"]},"Length":15527,"Name":"Picture","FileName":"beef.jpg"},"CategoryId":2,"LevelId":7,"UserId":1}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (94, CAST(N'2021-06-14T16:59:58.6809501' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":0,"Name":"Chocolate cake","Description":"For this Chocolate cake you will need...","Picture":null,"CategoryId":5,"LevelId":5,"UserId":1}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (95, CAST(N'2021-06-14T17:00:07.1999216' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":0,"Name":"Chocolate cake","Description":"For this Chocolate cake you will need...","Picture":{"ContentDisposition":"form-data; name=\"Picture\"; filename=\"chocolatecake.jpg\"","ContentType":"image/jpeg","Headers":{"Content-Disposition":["form-data; name=\"Picture\"; filename=\"chocolatecake.jpg\""],"Content-Type":["image/jpeg"]},"Length":11295,"Name":"Picture","FileName":"chocolatecake.jpg"},"CategoryId":5,"LevelId":5,"UserId":1}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (96, CAST(N'2021-06-14T17:00:43.7693047' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":0,"Name":"Chicken breast","Description":"For this Chicken breast you will need...","Picture":{"ContentDisposition":"form-data; name=\"Picture\"; filename=\"chickenbreast.jpg\"","ContentType":"image/jpeg","Headers":{"Content-Disposition":["form-data; name=\"Picture\"; filename=\"chickenbreast.jpg\""],"Content-Type":["image/jpeg"]},"Length":10248,"Name":"Picture","FileName":"chickenbreast.jpg"},"CategoryId":2,"LevelId":4,"UserId":1}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (97, CAST(N'2021-06-14T17:01:12.4224871' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":0,"Name":"Mac and Cheese","Description":"For this Mac and Cheese you will need...","Picture":{"ContentDisposition":"form-data; name=\"Picture\"; filename=\"macandcheese.jpg\"","ContentType":"image/jpeg","Headers":{"Content-Disposition":["form-data; name=\"Picture\"; filename=\"macandcheese.jpg\""],"Content-Type":["image/jpeg"]},"Length":8983,"Name":"Picture","FileName":"macandcheese.jpg"},"CategoryId":1,"LevelId":3,"UserId":1}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (98, CAST(N'2021-06-14T17:01:38.6553539' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":0,"Name":"Bruschetta","Description":"For this Bruschetta you will need...","Picture":{"ContentDisposition":"form-data; name=\"Picture\"; filename=\"bruschetta.jpg\"","ContentType":"image/jpeg","Headers":{"Content-Disposition":["form-data; name=\"Picture\"; filename=\"bruschetta.jpg\""],"Content-Type":["image/jpeg"]},"Length":11694,"Name":"Picture","FileName":"bruschetta.jpg"},"CategoryId":4,"LevelId":3,"UserId":1}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (99, CAST(N'2021-06-14T17:02:00.8243112' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":0,"Name":"Omlette","Description":"For this Omlette you will need...","Picture":{"ContentDisposition":"form-data; name=\"Picture\"; filename=\"omlette.jpg\"","ContentType":"image/jpeg","Headers":{"Content-Disposition":["form-data; name=\"Picture\"; filename=\"omlette.jpg\""],"Content-Type":["image/jpeg"]},"Length":12074,"Name":"Picture","FileName":"omlette.jpg"},"CategoryId":3,"LevelId":3,"UserId":0}', N'Neautorizovan korisnik.')
+GO
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (100, CAST(N'2021-06-14T17:02:31.3809452' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":0,"Name":"Omlette","Description":"For this Omlette you will need...","Picture":{"ContentDisposition":"form-data; name=\"Picture\"; filename=\"omlette.jpg\"","ContentType":"image/jpeg","Headers":{"Content-Disposition":["form-data; name=\"Picture\"; filename=\"omlette.jpg\""],"Content-Type":["image/jpeg"]},"Length":12074,"Name":"Picture","FileName":"omlette.jpg"},"CategoryId":3,"LevelId":3,"UserId":1}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (101, CAST(N'2021-06-14T17:03:06.9276397' AS DateTime2), N'EfCreateRecipeCommand', N'{"Id":0,"Name":"Shrimps","Description":"For this Shrimps you will need...","Picture":{"ContentDisposition":"form-data; name=\"Picture\"; filename=\"shrimps.jpg\"","ContentType":"image/jpeg","Headers":{"Content-Disposition":["form-data; name=\"Picture\"; filename=\"shrimps.jpg\""],"Content-Type":["image/jpeg"]},"Length":14489,"Name":"Picture","FileName":"shrimps.jpg"},"CategoryId":2,"LevelId":5,"UserId":1}', N't.pavlovic996@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (102, CAST(N'2021-06-14T17:04:23.5454438' AS DateTime2), N'User Registration', N'{"FirstName":"Tanja","LastName":"Zilic","Email":"tanja@gmail.com","Password":"cipiripi1"}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (103, CAST(N'2021-06-14T17:05:37.2566319' AS DateTime2), N'EfCreateCommentCommand', N'{"Id":0,"Text":"Delicious!","RecipeId":4,"UserId":0}', N'tanja@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (104, CAST(N'2021-06-14T17:06:10.2403835' AS DateTime2), N'EfCreateCommentCommand', N'{"Id":0,"Text":"Very easy to make!","RecipeId":6,"UserId":0}', N'tanja@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (105, CAST(N'2021-06-14T17:06:36.4445067' AS DateTime2), N'EfCreateCommentCommand', N'{"Id":0,"Text":"Me and my boyfriend love it!","RecipeId":7,"UserId":0}', N'tanja@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (106, CAST(N'2021-06-14T17:13:59.7943162' AS DateTime2), N'User Registration', N'{"FirstName":"Anja","LastName":"Zilic","Email":"anja@gmail.com","Password":"cipiripi1"}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (107, CAST(N'2021-06-14T17:25:29.1788884' AS DateTime2), N'User Registration', N'{"FirstName":"Jelena","LastName":"Zilic","Email":"jeca@gmail.com","Password":"cipiripi1"}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (108, CAST(N'2021-06-14T17:26:15.8471444' AS DateTime2), N'User Registration', N'{"FirstName":"Tamara","LastName":"Tam","Email":"tampav96@gmail.com","Password":"cipiripi1"}', N'Neautorizovan korisnik.')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (109, CAST(N'2021-06-14T17:27:35.1504252' AS DateTime2), N'EfCreateCommentCommand', N'{"Id":0,"Text":"Beautiful!","RecipeId":9,"UserId":0}', N'tampav96@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (110, CAST(N'2021-06-14T17:27:57.6375003' AS DateTime2), N'EfCreateCommentCommand', N'{"Id":0,"Text":"I added some lemon, it was yummy!","RecipeId":1,"UserId":0}', N'tampav96@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (111, CAST(N'2021-06-14T17:28:37.4849261' AS DateTime2), N'EfCreateCommentCommand', N'{"Id":0,"Text":"Best cheese for this recipe is mozzarella!","RecipeId":1,"UserId":0}', N'tampav96@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (112, CAST(N'2021-06-14T17:29:45.9262458' AS DateTime2), N'EfUpdateCommentCommand', N'{"Id":8,"Text":"Best cheese for this recipe is mozzarella","RecipeId":1,"UserId":7}', N'tampav96@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (113, CAST(N'2021-06-14T17:30:16.5499373' AS DateTime2), N'EfLikePostCommand', N'{"UserId":7,"RecipeId":1,"Status":1}', N'tampav96@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (114, CAST(N'2021-06-14T17:30:23.1046002' AS DateTime2), N'EfLikePostCommand', N'{"UserId":7,"RecipeId":2,"Status":1}', N'tampav96@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (115, CAST(N'2021-06-14T17:30:24.9776683' AS DateTime2), N'EfLikePostCommand', N'{"UserId":7,"RecipeId":3,"Status":1}', N'tampav96@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (116, CAST(N'2021-06-14T17:30:27.7717895' AS DateTime2), N'EfLikePostCommand', N'{"UserId":7,"RecipeId":4,"Status":1}', N'tampav96@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (117, CAST(N'2021-06-14T17:30:29.2994208' AS DateTime2), N'EfLikePostCommand', N'{"UserId":7,"RecipeId":5,"Status":1}', N'tampav96@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (118, CAST(N'2021-06-14T17:30:31.0094413' AS DateTime2), N'EfLikePostCommand', N'{"UserId":7,"RecipeId":6,"Status":1}', N'tampav96@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (119, CAST(N'2021-06-14T17:30:32.7363722' AS DateTime2), N'EfLikePostCommand', N'{"UserId":7,"RecipeId":7,"Status":1}', N'tampav96@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (120, CAST(N'2021-06-14T17:30:37.2055891' AS DateTime2), N'EfLikePostCommand', N'{"UserId":7,"RecipeId":8,"Status":1}', N'tampav96@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (121, CAST(N'2021-06-14T17:30:54.7758008' AS DateTime2), N'EfLikePostCommand', N'{"UserId":7,"RecipeId":8,"Status":2}', N'tampav96@gmail.com')
+INSERT [dbo].[UseCaseLogs] ([Id], [Date], [UseCaseName], [Data], [Actor]) VALUES (122, CAST(N'2021-06-14T18:38:02.4054031' AS DateTime2), N'EfGetUsersQuery', N'{"FirstName":null,"LastName":null,"Email":null,"PerPage":2,"Page":1}', N'Neautorizovan korisnik.')
+SET IDENTITY_INSERT [dbo].[UseCaseLogs] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Users] ON 
+
+INSERT [dbo].[Users] ([Id], [FirstName], [LastName], [Email], [Password], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (1, N'Admin', N'Admin', N't.pavlovic996@gmail.com', N'dec35c2c826488b33f87082b0f0e24c6ebb4a4d6f85898c9cd6695507d44c4a1', CAST(N'2021-06-14T12:55:59.8731152' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Users] ([Id], [FirstName], [LastName], [Email], [Password], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (2, N'Marko', N'Milic', N'gamesgamesgames996@gmail.com', N'dec35c2c826488b33f87082b0f0e24c6ebb4a4d6f85898c9cd6695507d44c4a1', CAST(N'2021-06-14T15:47:39.7598786' AS DateTime2), CAST(N'2021-06-14T17:54:31.4660547' AS DateTime2), 1, CAST(N'2021-06-14T17:54:31.4658605' AS DateTime2))
+INSERT [dbo].[Users] ([Id], [FirstName], [LastName], [Email], [Password], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (3, N'Sara', N'Pavlovic', N'titlip14@gmail.com', N'dec35c2c826488b33f87082b0f0e24c6ebb4a4d6f85898c9cd6695507d44c4a1', CAST(N'2021-06-14T16:39:35.1014855' AS DateTime2), CAST(N'2021-06-14T17:53:13.5401726' AS DateTime2), 0, NULL)
+INSERT [dbo].[Users] ([Id], [FirstName], [LastName], [Email], [Password], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (4, N'Tanja', N'Zilic', N'tanja@gmail.com', N'dec35c2c826488b33f87082b0f0e24c6ebb4a4d6f85898c9cd6695507d44c4a1', CAST(N'2021-06-14T19:04:23.5655035' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Users] ([Id], [FirstName], [LastName], [Email], [Password], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (5, N'Anja', N'Zilic', N'anja@gmail.com', N'dec35c2c826488b33f87082b0f0e24c6ebb4a4d6f85898c9cd6695507d44c4a1', CAST(N'2021-06-14T19:14:01.2405251' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Users] ([Id], [FirstName], [LastName], [Email], [Password], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (6, N'Jelena', N'Zilic', N'jeca@gmail.com', N'dec35c2c826488b33f87082b0f0e24c6ebb4a4d6f85898c9cd6695507d44c4a1', CAST(N'2021-06-14T19:25:30.6268935' AS DateTime2), NULL, 0, NULL)
+INSERT [dbo].[Users] ([Id], [FirstName], [LastName], [Email], [Password], [CreatedAt], [ModifiedAt], [IsDeleted], [DeletedAt]) VALUES (7, N'Tamara', N'Tam', N'tampav96@gmail.com', N'dec35c2c826488b33f87082b0f0e24c6ebb4a4d6f85898c9cd6695507d44c4a1', CAST(N'2021-06-14T19:26:15.8567491' AS DateTime2), NULL, 0, NULL)
+SET IDENTITY_INSERT [dbo].[Users] OFF
+GO
+SET IDENTITY_INSERT [dbo].[UserUseCases] ON 
+
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (11, 1, 2)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (12, 1, 3)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (13, 1, 4)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (14, 1, 5)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (15, 1, 6)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (16, 1, 7)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (17, 1, 8)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (18, 1, 9)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (19, 1, 10)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (20, 1, 12)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (21, 1, 15)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (22, 1, 16)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (23, 1, 18)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (24, 1, 21)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (25, 1, 22)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (26, 1, 24)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (27, 1, 28)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (28, 1, 29)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (29, 1, 31)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (30, 1, 32)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (31, 1, 33)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (32, 2, 11)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (33, 2, 13)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (34, 2, 14)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (35, 2, 17)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (36, 2, 19)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (37, 2, 20)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (38, 2, 23)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (39, 2, 25)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (40, 2, 26)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (41, 2, 30)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (63, 2, 15)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (65, 3, 30)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (66, 3, 26)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (67, 3, 25)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (68, 3, 23)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (69, 3, 20)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (70, 3, 19)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (71, 3, 14)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (72, 3, 13)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (73, 3, 11)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (74, 4, 11)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (75, 4, 13)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (76, 4, 14)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (77, 4, 17)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (78, 4, 19)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (79, 4, 20)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (80, 4, 23)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (81, 4, 25)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (82, 4, 26)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (83, 4, 30)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (84, 5, 11)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (85, 5, 13)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (86, 5, 14)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (87, 5, 17)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (88, 5, 19)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (89, 5, 20)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (90, 5, 23)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (91, 5, 25)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (92, 5, 26)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (93, 5, 30)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (94, 6, 11)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (95, 6, 13)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (96, 6, 14)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (97, 6, 17)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (98, 6, 19)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (99, 6, 20)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (100, 6, 23)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (101, 6, 25)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (102, 6, 26)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (103, 6, 30)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (104, 7, 11)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (105, 7, 13)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (106, 7, 14)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (107, 7, 17)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (108, 7, 19)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (109, 7, 20)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (110, 7, 23)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (111, 7, 25)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (112, 7, 26)
+INSERT [dbo].[UserUseCases] ([Id], [UserId], [UseCaseId]) VALUES (113, 7, 30)
+SET IDENTITY_INSERT [dbo].[UserUseCases] OFF
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [IX_Categories_Name]    Script Date: 6/15/2021 1:41:34 AM ******/
+CREATE UNIQUE NONCLUSTERED INDEX [IX_Categories_Name] ON [dbo].[Categories]
+(
+	[Name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_Comments_RecipeId]    Script Date: 6/15/2021 1:41:34 AM ******/
+CREATE NONCLUSTERED INDEX [IX_Comments_RecipeId] ON [dbo].[Comments]
+(
+	[RecipeId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_Comments_UserId]    Script Date: 6/15/2021 1:41:34 AM ******/
+CREATE NONCLUSTERED INDEX [IX_Comments_UserId] ON [dbo].[Comments]
+(
+	[UserId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [IX_Levels_Name]    Script Date: 6/15/2021 1:41:34 AM ******/
+CREATE UNIQUE NONCLUSTERED INDEX [IX_Levels_Name] ON [dbo].[Levels]
+(
+	[Name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_Likes_RecipeId]    Script Date: 6/15/2021 1:41:34 AM ******/
+CREATE NONCLUSTERED INDEX [IX_Likes_RecipeId] ON [dbo].[Likes]
+(
+	[RecipeId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_Likes_UserId]    Script Date: 6/15/2021 1:41:34 AM ******/
+CREATE NONCLUSTERED INDEX [IX_Likes_UserId] ON [dbo].[Likes]
+(
+	[UserId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_Recipes_CategoryId]    Script Date: 6/15/2021 1:41:34 AM ******/
+CREATE NONCLUSTERED INDEX [IX_Recipes_CategoryId] ON [dbo].[Recipes]
+(
+	[CategoryId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_Recipes_LevelId]    Script Date: 6/15/2021 1:41:34 AM ******/
+CREATE NONCLUSTERED INDEX [IX_Recipes_LevelId] ON [dbo].[Recipes]
+(
+	[LevelId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_Recipes_UserId]    Script Date: 6/15/2021 1:41:34 AM ******/
+CREATE NONCLUSTERED INDEX [IX_Recipes_UserId] ON [dbo].[Recipes]
+(
+	[UserId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [IX_Users_Email]    Script Date: 6/15/2021 1:41:34 AM ******/
+CREATE UNIQUE NONCLUSTERED INDEX [IX_Users_Email] ON [dbo].[Users]
+(
+	[Email] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_UserUseCases_UserId]    Script Date: 6/15/2021 1:41:34 AM ******/
+CREATE NONCLUSTERED INDEX [IX_UserUseCases_UserId] ON [dbo].[UserUseCases]
+(
+	[UserId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Comments]  WITH CHECK ADD  CONSTRAINT [FK_Comments_Recipes_RecipeId] FOREIGN KEY([RecipeId])
+REFERENCES [dbo].[Recipes] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Comments] CHECK CONSTRAINT [FK_Comments_Recipes_RecipeId]
+GO
+ALTER TABLE [dbo].[Comments]  WITH CHECK ADD  CONSTRAINT [FK_Comments_Users_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[Users] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Comments] CHECK CONSTRAINT [FK_Comments_Users_UserId]
+GO
+ALTER TABLE [dbo].[Likes]  WITH CHECK ADD  CONSTRAINT [FK_Likes_Recipes_RecipeId] FOREIGN KEY([RecipeId])
+REFERENCES [dbo].[Recipes] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Likes] CHECK CONSTRAINT [FK_Likes_Recipes_RecipeId]
+GO
+ALTER TABLE [dbo].[Likes]  WITH CHECK ADD  CONSTRAINT [FK_Likes_Users_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[Users] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Likes] CHECK CONSTRAINT [FK_Likes_Users_UserId]
+GO
+ALTER TABLE [dbo].[Recipes]  WITH CHECK ADD  CONSTRAINT [FK_Recipes_Categories_CategoryId] FOREIGN KEY([CategoryId])
+REFERENCES [dbo].[Categories] ([Id])
+GO
+ALTER TABLE [dbo].[Recipes] CHECK CONSTRAINT [FK_Recipes_Categories_CategoryId]
+GO
+ALTER TABLE [dbo].[Recipes]  WITH CHECK ADD  CONSTRAINT [FK_Recipes_Levels_LevelId] FOREIGN KEY([LevelId])
+REFERENCES [dbo].[Levels] ([Id])
+GO
+ALTER TABLE [dbo].[Recipes] CHECK CONSTRAINT [FK_Recipes_Levels_LevelId]
+GO
+ALTER TABLE [dbo].[Recipes]  WITH CHECK ADD  CONSTRAINT [FK_Recipes_Users_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[Users] ([Id])
+GO
+ALTER TABLE [dbo].[Recipes] CHECK CONSTRAINT [FK_Recipes_Users_UserId]
+GO
+ALTER TABLE [dbo].[UserUseCases]  WITH CHECK ADD  CONSTRAINT [FK_UserUseCases_Users_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[Users] ([Id])
+GO
+ALTER TABLE [dbo].[UserUseCases] CHECK CONSTRAINT [FK_UserUseCases_Users_UserId]
+GO
+USE [master]
+GO
+ALTER DATABASE [CookBlog] SET  READ_WRITE 
+GO
