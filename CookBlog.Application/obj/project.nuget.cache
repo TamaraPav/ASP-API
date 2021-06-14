@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "MoHaGIn3kscAslAfv86sURQfkCngvPD6NrbUmuvCr4ri2FrKAaFxdcKHfHDGer8G7S2Ho3E90v5tgz1q+btKuQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Application\\CookBlog.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ptama\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.7\\microsoft.aspnetcore.http.features.5.0.7.nupkg.sha512",
+    "C:\\Users\\ptama\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\ptama\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
+    "C:\\Users\\ptama\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

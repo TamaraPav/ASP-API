@@ -1,0 +1,18 @@
+C:\Users\ptama\source\repos\CookBlog.Domain\bin\Debug\netcoreapp3.1\CookBlog.Domain.deps.json
+C:\Users\ptama\source\repos\CookBlog.Domain\bin\Debug\netcoreapp3.1\CookBlog.Domain.dll
+C:\Users\ptama\source\repos\CookBlog.Domain\bin\Debug\netcoreapp3.1\CookBlog.Domain.pdb
+C:\Users\ptama\source\repos\CookBlog.Domain\obj\Debug\netcoreapp3.1\CookBlog.Domain.csproj.AssemblyReference.cache
+C:\Users\ptama\source\repos\CookBlog.Domain\obj\Debug\netcoreapp3.1\CookBlog.Domain.AssemblyInfoInputs.cache
+C:\Users\ptama\source\repos\CookBlog.Domain\obj\Debug\netcoreapp3.1\CookBlog.Domain.AssemblyInfo.cs
+C:\Users\ptama\source\repos\CookBlog.Domain\obj\Debug\netcoreapp3.1\CookBlog.Domain.csproj.CoreCompileInputs.cache
+C:\Users\ptama\source\repos\CookBlog.Domain\obj\Debug\netcoreapp3.1\CookBlog.Domain.dll
+C:\Users\ptama\source\repos\CookBlog.Domain\obj\Debug\netcoreapp3.1\CookBlog.Domain.pdb
+C:\Users\ptama\source\repos\New folder\CookBlog.Domain\bin\Debug\netcoreapp3.1\CookBlog.Domain.deps.json
+C:\Users\ptama\source\repos\New folder\CookBlog.Domain\bin\Debug\netcoreapp3.1\CookBlog.Domain.dll
+C:\Users\ptama\source\repos\New folder\CookBlog.Domain\bin\Debug\netcoreapp3.1\CookBlog.Domain.pdb
+C:\Users\ptama\source\repos\New folder\CookBlog.Domain\obj\Debug\netcoreapp3.1\CookBlog.Domain.csproj.AssemblyReference.cache
+C:\Users\ptama\source\repos\New folder\CookBlog.Domain\obj\Debug\netcoreapp3.1\CookBlog.Domain.AssemblyInfoInputs.cache
+C:\Users\ptama\source\repos\New folder\CookBlog.Domain\obj\Debug\netcoreapp3.1\CookBlog.Domain.AssemblyInfo.cs
+C:\Users\ptama\source\repos\New folder\CookBlog.Domain\obj\Debug\netcoreapp3.1\CookBlog.Domain.csproj.CoreCompileInputs.cache
+C:\Users\ptama\source\repos\New folder\CookBlog.Domain\obj\Debug\netcoreapp3.1\CookBlog.Domain.dll
+C:\Users\ptama\source\repos\New folder\CookBlog.Domain\obj\Debug\netcoreapp3.1\CookBlog.Domain.pdb

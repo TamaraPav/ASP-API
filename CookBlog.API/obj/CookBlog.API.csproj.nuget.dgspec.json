@@ -1,0 +1,385 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.API\\CookBlog.API.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.API\\CookBlog.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.API\\CookBlog.API.csproj",
+        "projectName": "CookBlog.API",
+        "projectPath": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.API\\CookBlog.API.csproj",
+        "packagesPath": "C:\\Users\\ptama\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.API\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ptama\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Application\\CookBlog.Application.csproj": {
+                "projectPath": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Application\\CookBlog.Application.csproj"
+              },
+              "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Domain\\CookBlog.Domain.csproj": {
+                "projectPath": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Domain\\CookBlog.Domain.csproj"
+              },
+              "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Implementation\\CookBlog.Implementation.csproj": {
+                "projectPath": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Implementation\\CookBlog.Implementation.csproj"
+              },
+              "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog\\CookBlog.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog\\CookBlog.DataAccess.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.1.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Application\\CookBlog.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Application\\CookBlog.Application.csproj",
+        "projectName": "CookBlog.Application",
+        "projectPath": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Application\\CookBlog.Application.csproj",
+        "packagesPath": "C:\\Users\\ptama\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ptama\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Domain\\CookBlog.Domain.csproj": {
+                "projectPath": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Domain\\CookBlog.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Domain\\CookBlog.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Domain\\CookBlog.Domain.csproj",
+        "projectName": "CookBlog.Domain",
+        "projectPath": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Domain\\CookBlog.Domain.csproj",
+        "packagesPath": "C:\\Users\\ptama\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ptama\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Implementation\\CookBlog.Implementation.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Implementation\\CookBlog.Implementation.csproj",
+        "projectName": "CookBlog.Implementation",
+        "projectPath": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Implementation\\CookBlog.Implementation.csproj",
+        "packagesPath": "C:\\Users\\ptama\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Implementation\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ptama\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Application\\CookBlog.Application.csproj": {
+                "projectPath": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Application\\CookBlog.Application.csproj"
+              },
+              "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog\\CookBlog.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog\\CookBlog.DataAccess.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
+            "EasyEncryption": {
+              "target": "Package",
+              "version": "[1.0.2, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[10.2.3, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog\\CookBlog.DataAccess.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog\\CookBlog.DataAccess.csproj",
+        "projectName": "CookBlog.DataAccess",
+        "projectPath": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog\\CookBlog.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\ptama\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ptama\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Domain\\CookBlog.Domain.csproj": {
+                "projectPath": "C:\\Users\\ptama\\source\\repos\\New folder\\CookBlog.Domain\\CookBlog.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

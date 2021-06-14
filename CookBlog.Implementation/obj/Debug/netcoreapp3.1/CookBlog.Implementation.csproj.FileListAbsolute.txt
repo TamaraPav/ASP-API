@@ -1,0 +1,32 @@
+C:\Users\ptama\source\repos\CookBlog.Implementation\bin\Debug\netcoreapp3.1\CookBlog.Implementation.deps.json
+C:\Users\ptama\source\repos\CookBlog.Implementation\bin\Debug\netcoreapp3.1\CookBlog.Implementation.dll
+C:\Users\ptama\source\repos\CookBlog.Implementation\bin\Debug\netcoreapp3.1\CookBlog.Implementation.pdb
+C:\Users\ptama\source\repos\CookBlog.Implementation\obj\Debug\netcoreapp3.1\CookBlog.Implementation.csproj.AssemblyReference.cache
+C:\Users\ptama\source\repos\CookBlog.Implementation\obj\Debug\netcoreapp3.1\CookBlog.Implementation.AssemblyInfoInputs.cache
+C:\Users\ptama\source\repos\CookBlog.Implementation\obj\Debug\netcoreapp3.1\CookBlog.Implementation.AssemblyInfo.cs
+C:\Users\ptama\source\repos\CookBlog.Implementation\obj\Debug\netcoreapp3.1\CookBlog.Implementation.csproj.CoreCompileInputs.cache
+C:\Users\ptama\source\repos\CookBlog.Implementation\obj\Debug\netcoreapp3.1\CookBlog.Implementation.dll
+C:\Users\ptama\source\repos\CookBlog.Implementation\obj\Debug\netcoreapp3.1\CookBlog.Implementation.pdb
+C:\Users\ptama\source\repos\CookBlog.Implementation\bin\Debug\netcoreapp3.1\CookBlog.Application.dll
+C:\Users\ptama\source\repos\CookBlog.Implementation\bin\Debug\netcoreapp3.1\CookBlog.DataAccess.dll
+C:\Users\ptama\source\repos\CookBlog.Implementation\bin\Debug\netcoreapp3.1\CookBlog.Domain.dll
+C:\Users\ptama\source\repos\CookBlog.Implementation\bin\Debug\netcoreapp3.1\CookBlog.Application.pdb
+C:\Users\ptama\source\repos\CookBlog.Implementation\bin\Debug\netcoreapp3.1\CookBlog.DataAccess.pdb
+C:\Users\ptama\source\repos\CookBlog.Implementation\bin\Debug\netcoreapp3.1\CookBlog.Domain.pdb
+C:\Users\ptama\source\repos\CookBlog.Implementation\obj\Debug\netcoreapp3.1\CookBlog.Implementation.csproj.CopyComplete
+C:\Users\ptama\source\repos\New folder\CookBlog.Implementation\bin\Debug\netcoreapp3.1\CookBlog.Implementation.deps.json
+C:\Users\ptama\source\repos\New folder\CookBlog.Implementation\bin\Debug\netcoreapp3.1\CookBlog.Implementation.dll
+C:\Users\ptama\source\repos\New folder\CookBlog.Implementation\bin\Debug\netcoreapp3.1\CookBlog.Implementation.pdb
+C:\Users\ptama\source\repos\New folder\CookBlog.Implementation\bin\Debug\netcoreapp3.1\CookBlog.Application.dll
+C:\Users\ptama\source\repos\New folder\CookBlog.Implementation\bin\Debug\netcoreapp3.1\CookBlog.DataAccess.dll
+C:\Users\ptama\source\repos\New folder\CookBlog.Implementation\bin\Debug\netcoreapp3.1\CookBlog.Domain.dll
+C:\Users\ptama\source\repos\New folder\CookBlog.Implementation\bin\Debug\netcoreapp3.1\CookBlog.Application.pdb
+C:\Users\ptama\source\repos\New folder\CookBlog.Implementation\bin\Debug\netcoreapp3.1\CookBlog.DataAccess.pdb
+C:\Users\ptama\source\repos\New folder\CookBlog.Implementation\bin\Debug\netcoreapp3.1\CookBlog.Domain.pdb
+C:\Users\ptama\source\repos\New folder\CookBlog.Implementation\obj\Debug\netcoreapp3.1\CookBlog.Implementation.csproj.AssemblyReference.cache
+C:\Users\ptama\source\repos\New folder\CookBlog.Implementation\obj\Debug\netcoreapp3.1\CookBlog.Implementation.AssemblyInfoInputs.cache
+C:\Users\ptama\source\repos\New folder\CookBlog.Implementation\obj\Debug\netcoreapp3.1\CookBlog.Implementation.AssemblyInfo.cs
+C:\Users\ptama\source\repos\New folder\CookBlog.Implementation\obj\Debug\netcoreapp3.1\CookBlog.Implementation.csproj.CoreCompileInputs.cache
+C:\Users\ptama\source\repos\New folder\CookBlog.Implementation\obj\Debug\netcoreapp3.1\CookBlog.Implementation.csproj.CopyComplete
+C:\Users\ptama\source\repos\New folder\CookBlog.Implementation\obj\Debug\netcoreapp3.1\CookBlog.Implementation.dll
+C:\Users\ptama\source\repos\New folder\CookBlog.Implementation\obj\Debug\netcoreapp3.1\CookBlog.Implementation.pdb

@@ -1,0 +1,30 @@
+C:\Users\ptama\source\repos\CookBlog\bin\Debug\netcoreapp3.1\CookBlog.DataAccess.deps.json
+C:\Users\ptama\source\repos\CookBlog\bin\Debug\netcoreapp3.1\CookBlog.DataAccess.runtimeconfig.json
+C:\Users\ptama\source\repos\CookBlog\bin\Debug\netcoreapp3.1\CookBlog.DataAccess.runtimeconfig.dev.json
+C:\Users\ptama\source\repos\CookBlog\bin\Debug\netcoreapp3.1\CookBlog.DataAccess.dll
+C:\Users\ptama\source\repos\CookBlog\bin\Debug\netcoreapp3.1\CookBlog.DataAccess.pdb
+C:\Users\ptama\source\repos\CookBlog\bin\Debug\netcoreapp3.1\CookBlog.Domain.dll
+C:\Users\ptama\source\repos\CookBlog\bin\Debug\netcoreapp3.1\CookBlog.Domain.pdb
+C:\Users\ptama\source\repos\CookBlog\obj\Debug\netcoreapp3.1\CookBlog.DataAccess.csproj.AssemblyReference.cache
+C:\Users\ptama\source\repos\CookBlog\obj\Debug\netcoreapp3.1\CookBlog.DataAccess.AssemblyInfoInputs.cache
+C:\Users\ptama\source\repos\CookBlog\obj\Debug\netcoreapp3.1\CookBlog.DataAccess.AssemblyInfo.cs
+C:\Users\ptama\source\repos\CookBlog\obj\Debug\netcoreapp3.1\CookBlog.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\ptama\source\repos\CookBlog\obj\Debug\netcoreapp3.1\CookBlog.DataAccess.csproj.CopyComplete
+C:\Users\ptama\source\repos\CookBlog\obj\Debug\netcoreapp3.1\CookBlog.DataAccess.dll
+C:\Users\ptama\source\repos\CookBlog\obj\Debug\netcoreapp3.1\CookBlog.DataAccess.pdb
+C:\Users\ptama\source\repos\CookBlog\obj\Debug\netcoreapp3.1\CookBlog.DataAccess.genruntimeconfig.cache
+C:\Users\ptama\source\repos\New folder\CookBlog\bin\Debug\netcoreapp3.1\CookBlog.DataAccess.deps.json
+C:\Users\ptama\source\repos\New folder\CookBlog\bin\Debug\netcoreapp3.1\CookBlog.DataAccess.runtimeconfig.json
+C:\Users\ptama\source\repos\New folder\CookBlog\bin\Debug\netcoreapp3.1\CookBlog.DataAccess.runtimeconfig.dev.json
+C:\Users\ptama\source\repos\New folder\CookBlog\bin\Debug\netcoreapp3.1\CookBlog.DataAccess.dll
+C:\Users\ptama\source\repos\New folder\CookBlog\bin\Debug\netcoreapp3.1\CookBlog.DataAccess.pdb
+C:\Users\ptama\source\repos\New folder\CookBlog\bin\Debug\netcoreapp3.1\CookBlog.Domain.dll
+C:\Users\ptama\source\repos\New folder\CookBlog\bin\Debug\netcoreapp3.1\CookBlog.Domain.pdb
+C:\Users\ptama\source\repos\New folder\CookBlog\obj\Debug\netcoreapp3.1\CookBlog.DataAccess.csproj.AssemblyReference.cache
+C:\Users\ptama\source\repos\New folder\CookBlog\obj\Debug\netcoreapp3.1\CookBlog.DataAccess.AssemblyInfoInputs.cache
+C:\Users\ptama\source\repos\New folder\CookBlog\obj\Debug\netcoreapp3.1\CookBlog.DataAccess.AssemblyInfo.cs
+C:\Users\ptama\source\repos\New folder\CookBlog\obj\Debug\netcoreapp3.1\CookBlog.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\ptama\source\repos\New folder\CookBlog\obj\Debug\netcoreapp3.1\CookBlog.DataAccess.csproj.CopyComplete
+C:\Users\ptama\source\repos\New folder\CookBlog\obj\Debug\netcoreapp3.1\CookBlog.DataAccess.dll
+C:\Users\ptama\source\repos\New folder\CookBlog\obj\Debug\netcoreapp3.1\CookBlog.DataAccess.pdb
+C:\Users\ptama\source\repos\New folder\CookBlog\obj\Debug\netcoreapp3.1\CookBlog.DataAccess.genruntimeconfig.cache

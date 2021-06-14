@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="EasyEncryption" Version="1.0.2" />
+    <PackageReference Include="FluentValidation" Version="10.2.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CookBlog.Application\CookBlog.Application.csproj" />
+    <ProjectReference Include="..\CookBlog\CookBlog.DataAccess.csproj" />
+  </ItemGroup>
+
+</Project>
